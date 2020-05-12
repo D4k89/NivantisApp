@@ -1,0 +1,17 @@
+{
+  "name": "AvantisApp",
+  "displayName": "AvantisApp",
+  "expo": {
+    "name": "AvantisApp",
+    "slug": "AvantisApp",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
