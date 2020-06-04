@@ -1,9 +1,9 @@
 {
-  "name": "AvantisApp",
-  "displayName": "AvantisApp",
+  "name": "NivantisApp",
+  "displayName": "NivantisApp",
   "expo": {
-    "name": "AvantisApp",
-    "slug": "AvantisApp",
+    "name": "NivantisApp",
+    "slug": "NivantisApp",
     "version": "1.0.0",
     "platforms": [
       "ios",

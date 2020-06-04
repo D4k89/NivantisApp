@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {Text, View } from 'react-native';
 
 export default class GeolocalisationScreen extends React.Component {
     render(){

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import 'react-native-gesture-handler';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Platform} from 'react-native';
+//import Ionicons from 'react-native-vector-icons/Ionicons';
 
 //React-Navigation Import 
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -21,19 +20,20 @@ const instructions = Platform.select({
 
 const BottomMenu = createBottomTabNavigator();
 
-export default function App() {
+export default class App extends React.Component {
+ render(){
   return (
   
-      
-   <NavigationContainer >
-    <BottomMenu.Navigator>
-      <BottomMenu.Screen name ="Accueil" component={AccueilScreen}/>
-      <BottomMenu.Screen name ="Calcul" component={CalculScreen}/>
-      <BottomMenu.Screen name ="Formulaire" component={FormScreen}/>
-      <BottomMenu.Screen name ="Geolocalisation" component={GeolocalisationScreen}/>
-    </BottomMenu.Navigator>
-   </NavigationContainer> 
-  );
+    <NavigationContainer >
+     <BottomMenu.Navigator>
+       <BottomMenu.Screen name ="Accueil" component={AccueilScreen}/>
+       <BottomMenu.Screen name ="Calcul" component={CalculScreen}/>
+       <BottomMenu.Screen name ="Formulaire" component={FormScreen}/>
+       <BottomMenu.Screen name ="Geolocalisation" component={GeolocalisationScreen}/>
+     </BottomMenu.Navigator>
+    </NavigationContainer> 
+   );
+ }
 }
 
 

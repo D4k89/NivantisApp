@@ -1,51 +1,29 @@
 import * as React from 'react';
-import { Platform, TextInput, StyleSheet, Text, View, Button } from 'react-native';
+import {StyleSheet, Text, View } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
-export default class CalculScreen extends React.Component {
-    
-    
-    constructor (props) {
-        super(props);
-        //Variable à utiliser dans les calculs
-        
+//Import des composants
+import FormTauxRemise from "../Components/FormTauxRemise";
+import FormPrixAchatNet from '../Components/FormPrixAchatNet';
+import FormPrixDeVenteNet from '../Components/FormPrixDeVenteNet';
+import FormCoeffMulti from "../Components/FormCoeffMulti";
 
-    };
+ class CalculScreen extends React.Component {
+    
 
     render() {
         return(
             <ScrollView>
                 
-                <View>
-                    <Text>Taux de remise :</Text>
-                    <TouchableOpacity>
-                        
-
-                    </TouchableOpacity>
-
-                    
-                    
+                <View style={{marginTop:50 , marginRight: 5, marginLeft:5}}>
+                        <FormTauxRemise />
+                        <FormPrixAchatNet/>
+                        <FormPrixDeVenteNet/>
+                        <FormCoeffMulti/>
                 </View>
 
             </ScrollView>
         );
-
-        function CalculerTauxRemise () {
-            // (1 – Prix d’achat net / Prix d’achat brut) x 100 
-
-        }
-
-        function CalculerPrixAchatNet () {
-            //  Prix d’achat brut x (1 – taux de remise) 
-        }
-
-        function CalculerPrixVenteNet () {
-            // prix d’achat net x coefficient multiplicateur
-        }
-
-        function CalculerCoefficientMultiplicateur () {
-            // Prix de vente net / Prix d’achat net
-        }
     }
-
 }
+export default CalculScreen
