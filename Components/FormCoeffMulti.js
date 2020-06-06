@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { View, StyleSheet, Button, Text, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
@@ -6,7 +6,7 @@ class FormCoeffMulti extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             PrixVenteNet: 0,
             PrixAchatNet: 0,
             resultat: 0
@@ -14,13 +14,16 @@ class FormCoeffMulti extends React.Component {
     };
 
    _Calcul = () => {
-       var PrixVenteNet =this.state.PrixVenteNet;
-       var PrixAchatNet =this.state.PrixAchatNet;
-        
-       this.state.resultat= (PrixVenteNet/PrixAchatNet);
-         
-       Alert.alert("Le coefficient multiplicateur est : " + this.state.resultat.toFixed(2)+"") ;
+        const{PrixAchatNet} =this.state;
+        const{PrixVenteNet} =this.state;
+        let {resultat} = this.state
        
+        if(Number(PrixAchatNet) >= 0 && Number(PrixVenteNet) >= 0){
+            resultat= (PrixVenteNet/PrixAchatNet);
+            Alert.alert("Le coefficient multiplicateur est : " +resultat.toFixed(2)+"") ;
+        }else{
+            Alert.alert("Une ou plusieurs valeurs sont manquantes/négatives");
+        }
     }
 
     render(){
@@ -30,22 +33,20 @@ class FormCoeffMulti extends React.Component {
 
             <TextInput style={styles.input} keyboardType ="numeric"
              placeholder="Indiquez le prix de vente net" 
-             onChangeText={(Number) =>{this.setState({PrixVenteNet: Number}) 
-             
-            }}/>
+             onChangeText={PrixVenteNet => this.setState({PrixVenteNet})}
+             />
             
             <TextInput style={styles.input} keyboardType ="numeric"
              placeholder="Indiquez le prix d'achat net" 
-             onChangeText={(Number) =>{this.setState({PrixAchatNet: Number}) 
-            }}/>
+             onChangeText={PrixAchatNet => this.setState({PrixAchatNet})}/>
             
-                <Text style={{fontSize: 15}}>Coefficient multiplicateur : {this.state.resultat}</Text>
+                <Text style={{fontSize: 15}}>Coefficient multiplicateur : {this.state.resultat.toFixed(2)}</Text>
             
             <TouchableHighlight>
             <Button 
              title="Calculer"
              color="red"
-             onPress={() => this._Calcul()}/>
+             onPress={this._Calcul}/>
             </TouchableHighlight>
           </View>
        

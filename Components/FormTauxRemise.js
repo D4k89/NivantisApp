@@ -1,29 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet ,View, Button, Text, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 class FormTauxRemise extends React.Component {
     
+    
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             PrixAchatNet: 0,
             PrixAchatBrut: 0,
-            resultat: 0
+            resultat: 0,
         };
     };
 
    _Calcul = () => {
-       var PrixAchatNet =this.state.PrixAchatNet;
-       var PrixAchatBrut =this.state.PrixAchatBrut;
-        
-       this.state.resultat= (1 - PrixAchatNet/PrixAchatBrut)*100;
-    
-       Alert.alert("Le taux de remise est de  " + this.state.resultat.toFixed(2)+"%") ;
-       
+        const{PrixAchatNet} =this.state;
+        const{PrixAchatBrut} =this.state;
+        let {resultat} =this.state;
+      
+        if(Number(PrixAchatNet) >= 0 && Number(PrixAchatBrut) >= 0){
+            if(Number(PrixAchatBrut) > Number(PrixAchatNet)){
+                resultat = (1 - PrixAchatNet/PrixAchatBrut)*100;
+                Alert.alert("Le taux de remise est de  " +resultat.toFixed(2)+"%");
+            }else{
+                Alert.alert("La valeur brut doit être plus élevée que la valeur net");
+            }
+        }else{
+            Alert.alert("Une ou plusieurs valeurs sont manquantes/négatives");
+        } 
     }
 
     render(){
+        
         return(
             <View style={styles.container}>
 
@@ -31,22 +40,21 @@ class FormTauxRemise extends React.Component {
 
             <TextInput style={styles.input} keyboardType ="numeric" 
              placeholder="Indiquez le prix d'achat net" 
-             onChangeText={(Number) =>{this.setState({PrixAchatNet: Number}) 
-             
-            }}/>
+             onChangeText={PrixAchatNet => this.setState({PrixAchatNet})}
+             />
             
             <TextInput style={styles.input}  keyboardType ="numeric" 
              placeholder="Indiquez le prix d'achat brut" 
-             onChangeText={(Number) =>{this.setState({PrixAchatBrut: Number}) 
-            }}/>
+             onChangeText={PrixAchatBrut => this.setState({PrixAchatBrut})}
+             />
             
-                <Text style={{fontSize: 15}}>Le taux de remise est de : {this.state.resultat} %</Text>
+                <Text style={{fontSize: 15}}>Le taux de remise est de : {this.state.resultat.toFixed(2)} %</Text>
             
             <TouchableHighlight>
             <Button 
              title="Calculer"
              color="red"
-             onPress={() => this._Calcul()}/>
+             onPress={this._Calcul}/>
             </TouchableHighlight>
           </View>
        

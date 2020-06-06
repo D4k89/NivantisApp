@@ -14,12 +14,18 @@ class FormPrixDeVenteNet extends React.Component {
     };
 
    _Calcul = () => {
-        var PrixAchatNet =this.state.PrixAchatNet;
-        var CoefficientMulti =this.state.CoefficientMulti;
+        const{PrixAchatNet} =this.state;
+        const{CoefficientMulti} =this.state;
+        let {resultat} =this.state;
         
-        this.state.resultat= (PrixAchatNet*CoefficientMulti);
+        if(Number(PrixAchatNet) >= 0 && Number(PrixAchatBrut) >= 0){
+            resultat = (PrixAchatNet*CoefficientMulti);
     
-       Alert.alert("Le prix de vente net est de  " + this.state.resultat.toFixed(2)+"euros") ;
+            Alert.alert("Le prix de vente net est de  " + this.state.resultat.toFixed(2)+"euros") ;
+        }else{
+
+        }
+       
        
     }
 
@@ -30,22 +36,21 @@ class FormPrixDeVenteNet extends React.Component {
 
             <TextInput style={styles.input} keyboardType ="numeric"
              placeholder="Indiquez le prix d'achat net" 
-             onChangeText={(Number) =>{this.setState({PrixAchatNet: Number}) 
-             
-            }}/>
+             onChangeText={PrixAchatNet => this.setState({PrixAchatNet})}
+             />
             
             <TextInput style={styles.input} keyboardType ="numeric"
              placeholder="Indiquez le coefficient multiplicateur" 
-             onChangeText={(Number) =>{this.setState({CoefficientMulti: Number}) 
-            }}/>
+             onChangeText={CoefficientMulti => this.setState({CoefficientMulti})}
+             />
             
-                <Text style={{fontSize: 15}}>Le prix de vente net est de : {this.state.resultat} euros</Text>
+                <Text style={{fontSize: 15}}>Le prix de vente net est de : {this.state.resultat.toFixed(2)} euros</Text>
             
             <TouchableHighlight>
             <Button 
              title="Calculer"
              color="red"
-             onPress={() => this._Calcul()}/>
+             onPress={this._Calcul}/>
             </TouchableHighlight>
           </View>
        
