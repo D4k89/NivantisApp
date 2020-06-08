@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { View, StyleSheet , Button, Text, Alert } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
@@ -18,15 +18,12 @@ class FormPrixDeVenteNet extends React.Component {
         const{CoefficientMulti} =this.state;
         let {resultat} =this.state;
         
-        if(Number(PrixAchatNet) >= 0 && Number(PrixAchatBrut) >= 0){
+        if(Number(PrixAchatNet) >= 0 && Number(CoefficientMulti) >= 0){
             resultat = (PrixAchatNet*CoefficientMulti);
-    
-            Alert.alert("Le prix de vente net est de  " + this.state.resultat.toFixed(2)+"euros") ;
+            Alert.alert("Le prix de vente net est de  " +resultat.toFixed(2)+"euros") ;
         }else{
-
+            Alert.alert("Une ou plusieurs valeurs sont manquantes/négatives");
         }
-       
-       
     }
 
     render(){
