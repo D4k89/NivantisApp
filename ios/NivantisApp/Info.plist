@@ -78,5 +78,7 @@
 	<string>Give NivantisApp periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow NivantisApp to access your reminders</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string><Allow Nivantis to acces to your location/string>
 </dict>
 </plist>
