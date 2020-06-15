@@ -1,36 +1,39 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { Platform} from 'react-native';
+//import Ionicons from 'react-native-vector-icons/Ionicons';
+
+//React-Navigation Import 
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+//Screen Import
+import CalculScreen from '../NivantisApp/Screen/CalculScreen';
+import FormScreen from '../NivantisApp/Screen/FormScreen';
+import GeolocalisationScreen from '../NivantisApp/Screen/GeolocalisationScreen';
+import AccueilScreen from '../NivantisApp/Screen/AccueilScreen';
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
 });
 
-export default function App() {
+const BottomMenu = createBottomTabNavigator();
+
+export default class App extends React.Component {
+ render(){
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
-    </View>
-  );
+  
+    <NavigationContainer >
+     <BottomMenu.Navigator>
+       <BottomMenu.Screen name ="Accueil" component={AccueilScreen}/>
+       <BottomMenu.Screen name ="Calcul" component={CalculScreen}/>
+       <BottomMenu.Screen name ="Formulaire" component={FormScreen}/>
+       <BottomMenu.Screen name ="Geolocalisation" component={GeolocalisationScreen}/>
+     </BottomMenu.Navigator>
+    </NavigationContainer> 
+   );
+ }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+
