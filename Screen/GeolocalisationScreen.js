@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Text, View } from 'react-native';
-import MapComponents from '../Components/MapComponents'
+import {View } from 'react-native';
+import DataMap from '../Components/DataMap';
+
 
 class GeolocalisationScreen extends React.Component {    
     constructor(props){
@@ -12,9 +13,9 @@ class GeolocalisationScreen extends React.Component {
     
     render(){
         return(
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View>
                 
-                <MapComponents/>
+                <DataMap/>
             </View>
         );
     }
