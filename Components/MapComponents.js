@@ -14,24 +14,24 @@ class Mapcomponent extends React.Component {
         
         //console.log(this.props.Data[0])
     };
-componentDidMount(){
-    setInterval(() => {
-        this.props.Data[0].forEach(element => {
+//componentDidMount(){
+  //  setInterval(() => {
+    //    this.props.Data[0].forEach(element => {
             
             //console.log(this.props.Data[0].element.longitude);
             //console.log(this.props.Data[0].element.latitude);
 
             /*console.log(this.state.Markerlongitude);
             console.log(this.state.Markerlatitude);*/
-            console.log(this.props.Data[0][0].long);
-            console.log(this.props.Data[0][0].lat);
+      //      console.log(this.props.Data[0][0].long);
+        //    console.log(this.props.Data[0][0].lat);
             
-            <Marker
-            title="this is a title" 
-            coordinate = {{latitude : this.props.Data[0][0].lat,
-            longitude: this.props.Data[0][0].long}}/>
+          //  <Marker
+            //title="this is a title" 
+            //coordinate = {{latitude : this.props.Data[0][0].lat,
+            //longitude: this.props.Data[0][0].long}}/>
             
-        });
+        //});
         
         /*console.log(this.props.Data[0][index].longitude)
         console.log(this.props.Data[0][index].latitute)*/
@@ -39,8 +39,8 @@ componentDidMount(){
        //console.log(this.props.Data[0][0].longitude)
        //console.log(this.props.Data[0][1].longitude)
         
-    }, 5000);
-}
+    //}, 5000);
+//}
     
 
     UNSAFE_componentWillMount(){
@@ -80,7 +80,7 @@ componentDidMount(){
 const styles = StyleSheet.create({
     container: {
       ...StyleSheet.absoluteFillObject,
-      //marginTop : 300,
+      marginTop : 300,
       height: 400,
       width: 400,
     },
